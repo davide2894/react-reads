@@ -148,22 +148,21 @@ Fn to render a book should pick all the data from the book's JSON and, based on 
 So to recap:
 
 TODO:
-0. with drawings of home and search screens:
-	- home screen:
-		* identify component
-	- search screen:
-		* identify component
-	- how do components interact?
-	- create project folder structure
+v0. with drawings of home and search screens:
+	v- home screen:
+	v	* identify component
+	v- search screen:
+	v	* identify component
+	v- how do components interact?
+	v- create project folder structure
 1. build static versions of the app. This means:
 	- home screen:
 		* build components:
-			1. Header
-			2. Search icon that links to /search
-			3. Shelf
-			4. Book options
-			5. AddBook Button
-			6. Single book
+			v1. Header
+			2. Shelf
+			3. Book options
+			4. AddBook Button
+			5. Single book
 		* build styles
 		* use props to pass data from parent to child	
 	- search screen:

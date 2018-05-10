@@ -1,0 +1,30 @@
+body {
+	font-family: sans-serif;
+}
+
+.header-container {
+	background-color: #222;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.header {
+	color: #f5f5f5;
+	margin: 0;
+	font-size: 3em;
+}
+
+.search-link {
+	display: block;
+	width: 80px;
+	background: #222;
+	background-image: url(./assets/search.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	font-size: 0;
+}

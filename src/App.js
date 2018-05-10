@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import Header from './components/Header'
 import * as BooksAPI from './utils/BooksAPI'
+import { Route } from 'react-router-dom'
 
 class App extends Component {					
 	
@@ -12,9 +13,14 @@ class App extends Component {
   	
     render() {
       return (
-        <div className="App">
-          Hello World :) !!!
-        </div>
+		  <Route 
+		  	exact path='/' 
+		  	render={()=>(
+			  <div className="App">
+				<Header/>
+			  </div>
+			)}
+     	  />
       );
     }
 }
