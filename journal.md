@@ -9,6 +9,16 @@ v make header component
 ...
 Header component created. 
 
-TODO: create Book component
+TODO: create Book component.
+The Book component should have:
+- img
+- (on the right corner of the img) button moveToShelf.
+- title
+- subtitle
+
+I can make a method to fetch book img from API. But the thing is, API requests should be made in app.js because props flows from parent to child
 
 
+
+# Day 4 - Fri 11/5/18
+7:01am - when get data with API call, before passing array el as prop (arr[n] being an obj in this case), use conditional in the return to be sure to return that element only when prop value is ready. Otherwise I'll get undefined error
