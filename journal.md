@@ -21,4 +21,21 @@ I can make a method to fetch book img from API. But the thing is, API requests s
 
 
 # Day 4 - Fri 11/5/18
-7:01am - when get data with API call, before passing array el as prop (arr[n] being an obj in this case), use conditional in the return to be sure to return that element only when prop value is ready. Otherwise I'll get undefined error
+7:01am - when get data with API call, before passing array el as prop (arr[n] being an obj in this case), use conditional in the return to be sure to return that element only when prop value is ready. Otherwise I'll get undefined error.
+TODO: build Shelf.
+This is the Currently Reading one, so it must have:
+- header:
+	* h2
+- main:
+	* book list
+	
+For the book list, should put an array called shelfBooks, where I filter the books this.state.books by taking only the ones whose books.shelf === 'currentlyReading'. When I succeed to render a single shelf, what I can do is to abstract it. 
+
+...
+
+Made a shelf, now I should handle book division in three shelves.
+
+...
+
+Correction: I improved book display.
+Now I should handle books in the three shelves. So now I have one Shelf component

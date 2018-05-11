@@ -2,25 +2,27 @@ body {
 	font-family: sans-serif;
 }
 
-.header-container {
+/* Header */
+
+.header {
 	background-color: #222;
-	display: -webkit-box;
-	display: -ms-flexbox;
+}
+
+.header__content{
 	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
 	justify-content: space-between;
 }
 
-.header {
+.header__title {
 	color: #f5f5f5;
 	margin: 0;
-	font-size: 3em;
+	font-size: 2em;
+	padding: 0.5em;
 }
 
-.search-link {
+.header__search-link {
 	display: block;
-	width: 80px;
+	width: 40px;
 	background: #222;
 	background-image: url(./assets/search.svg);
 	background-repeat: no-repeat;
@@ -28,3 +30,129 @@ body {
 	background-position: center;
 	font-size: 0;
 }
+
+
+/* Shelf */
+.shelf {
+	margin: 0 2em;
+}
+
+.shelf__title {
+	border-bottom: 6px solid #d58963;
+	margin-bottom: 1em;
+}
+
+.shelf__books {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 1em;
+	justify-items: center;
+}
+
+
+/* Book */
+
+.book {
+	max-width: 180px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 3em;
+}
+
+.book__img {
+	width: 130px;
+	height: 180px;
+	margin: 0 auto;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.book__button {
+	position: relative;
+	top: 200px;
+    left: 105px;
+	border: none;
+	border-radius: 2em;
+	background-color: #d58963;
+	width: 2.7em;
+	padding: 1.8em;
+	height: 40px;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.book__info {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 1.2em;
+	
+}
+
+.book__title,
+.book__subtitle {
+	margin: 0.2em 0;
+}
+
+.book__title {
+	color: #222;
+	margin-top: 1em;
+}
+
+.book__subtitle {
+	color: #737373;
+}
+
+
+
+/* Media queries */
+
+@media screen and (min-width: 380px) {
+	.header__content {
+		margin: 0 1em;
+	}
+	
+	.shelf__books {
+		grid-template-columns: 1fr 1fr;
+	}
+
+}
+@media screen and (min-width: 450px) {
+	.header__content {
+		justify-content: center;
+	}
+
+}
+
+
+
+@media screen and (min-width: 600px) {
+	
+	.shelf {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	.shelf__books {
+		grid-template-columns: 1fr 1fr 1fr;
+		
+	}
+
+}
+
+@media screen and (min-width: 850px) {
+	
+	.shelf {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	.shelf__books {
+		grid-template-columns: repeat(4, 1fr);
+		
+	}
+
+}
+
+/*
+@media screen and min-width( px) {
+	
+
+}
+*/

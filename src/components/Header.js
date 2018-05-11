@@ -5,13 +5,16 @@ class Header extends Component {
 	
 	render(){
 		return (
-			<div className='header-container'>
-				<h1 className='header'>React Reads</h1>
-				<Link 
-					to='/search'
-					className='search-link'
-				>
-				</Link>
+			<div className='header'>
+				<div className="header__content">
+					<h1 className='header__title'>React Reads</h1>
+					<Link 
+						to='/search'
+						className='header__search-link'
+						title='Search a book'
+					>
+					</Link>
+				</div>
 			</div>
 		)
 	}

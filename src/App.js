@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header'
-import Book from './components/Shelf/Book'
+import Shelf from './components/Shelf/Shelf'
 import * as BooksAPI from './utils/BooksAPI'
 import { Route } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ class App extends Component {
 			render={()=>(
 			  <div className="App" >
 				<Header/>
-				{this.state.books[0] && (<Book details={this.state.books[0]}/>) } 
+				<Shelf books={this.state.books}/>
 			  </div>
 			)}
 		  />
