@@ -156,22 +156,21 @@ v0. with drawings of home and search screens:
 	v- how do components interact?
 	v- create project folder structure
 1. build static versions of the app. This means:
-	- home screen:
-		* build components:
-			v1. Header
-			2. Shelf
-			3. Book options
-			4. AddBook Button
-			5. Single book
-		* build styles
-		* use props to pass data from parent to child	
-	- search screen:
-		* build components:
-			1. Search inputs
-			2. Back arrow
-			3. Book results
-		* build styles
-		* use props to pass data from parent to child
+	v home screen:
+	v	* build components:
+	v		v1. Header
+	v		2. Shelf
+	v		3. Book options
+	v		4. AddBook Button
+	v		5. Single book
+	v	* build styles
+	v	* use props to pass data from parent to child	
+	v search screen:
+	v	* build components:
+	v		1. Search inputs
+	v		2. Back arrow
+	v	* build styles
+	v	* use props to pass data from parent to child
 2. build interactivity
 	- identify where UI state changes
 	- build states

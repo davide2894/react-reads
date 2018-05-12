@@ -6,7 +6,17 @@ class Book extends Component {
 				
 		return (
 				<div className='book'>
-					<button className='book__button'></button>
+					<div className='book__dropdown'>
+						<button className='dropdown__button'></button>
+						<div className='dropdown__content'>
+							<h3 className='dropdown__title'>Move to...</h3>
+							<ul className='dropdown__list'>
+								<li className="dropdown__list-item">Currently reading</li>
+								<li className="dropdown__list-item">Want to read</li>
+								<li className="dropdown__list-item">Have read</li>
+							</ul>
+						</div>						
+					</div>
 					<img 
 						className='book__img'
 						alt='Book cover'

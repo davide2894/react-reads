@@ -10,7 +10,7 @@ class Shelf extends Component {
 		
 		return (
 			<div className='shelf'>
-				<h1 className='shelf__title'>Shelf</h1>
+				<h1 className='shelf__title'>{this.props.title}</h1>
 				<div className="shelf__books">
 					{books.map((book) => (
 						<Book details={book} key={book.id}/>
