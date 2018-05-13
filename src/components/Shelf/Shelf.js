@@ -12,9 +12,9 @@ class Shelf extends Component {
 			<div className='shelf'>
 				<h1 className='shelf__title'>{books.title}</h1>
 				<div className="shelf__books">
-					{books.map((book) => (
+					{books.map((book) => 
 						<Book details={book} key={book.id}/>
-					))}
+					)}
 				</div>
 			</div>
 		)
