@@ -99,3 +99,16 @@ When I click on the dropdown icon this is what should happen:
 	* book is moved to new shelf
 	* selection is saved 
 - page refresh: current state  saved
+
+
+***
+
+# Day 6 - Sun 13/5/18
+5:09am - Books will move among shelves frequently, so when one is moved, what actually happens is that:
+- book.shelf string changes
+- organizeBooks() is called 
+Because it's not good (I think) to have to make an API call everytime a book is moved. So stat --
+
+Wait there, there's a server I need to update at each book move, because that's what happens for real-world applications with real-wold servers.
+
+And there's another thing: right now the state I created is for a static website, meaning that it can't be changed now. I need to implement the function version of the state. Hmmm.
