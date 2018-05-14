@@ -109,6 +109,16 @@ When I click on the dropdown icon this is what should happen:
 - organizeBooks() is called 
 Because it's not good (I think) to have to make an API call everytime a book is moved. So stat --
 
-Wait there, there's a server I need to update at each book move, because that's what happens for real-world applications with real-wold servers.
+Wait there, there's a server I need to update at each book move, because that's what happens for real-world applications with real-world servers.
 
 And there's another thing: right now the state I created is for a static website, meaning that it can't be changed now. I need to implement the function version of the state. Hmmm.
+
+Added BookList. 
+
+***
+
+# Day 7 - Mon 14/5/18
+5:02am - how to add the checkmark to the list? Should try checkmark unicode. 
+Yep it works. Ok so this is also something that changes in time cause user can select different shelf at any time. So this is state too. Where should the state live? In Book?? It's like when user selects another shelf, that book.shelf string changes accordingly, then I will use BooksAPI.update(book, shelf) to update its position. I need to test what update does in practice.
+
+I see that using a <select> tag with <option>s children is more appropriate. I found a component control on gh 'react-select' that eases the job. Gonna try that now. I'll come back with the outcome

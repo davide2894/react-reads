@@ -3,11 +3,6 @@ import Shelf from './Shelf/Shelf'
 
 class BookList extends Component {
 	
-//	filterBooks(shelf, shelfstring){
-//		shelf = this.state.books.filter((book)=> book.shelf===shelfstring)
-//		console.log();
-//	}
-	
 	render(){
 		
 		let { books } = this.props
