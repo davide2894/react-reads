@@ -122,3 +122,16 @@ Added BookList.
 Yep it works. Ok so this is also something that changes in time cause user can select different shelf at any time. So this is state too. Where should the state live? In Book?? It's like when user selects another shelf, that book.shelf string changes accordingly, then I will use BooksAPI.update(book, shelf) to update its position. I need to test what update does in practice.
 
 I see that using a <select> tag with <option>s children is more appropriate. I found a component control on gh 'react-select' that eases the job. Gonna try that now. I'll come back with the outcome
+
+
+-->find what you get when you click on a book. Need to understand how to tell the program to recognize different books
+
+***
+
+# Day 8 - Tue 15/5/18
+5:34am - continue from where I left yesterday. 
+So books' ids are indeed registered and react knows which books it's dealing with
+
+6:46am - I found a way to pass the selected value to parent child. I used two methods, one in parent, the other in child comp. Parent method is updating state w/param value. Child method is storing selection value with ref, then calls parent method via prop and passes selection in it. 
+
+Now I can call API to update

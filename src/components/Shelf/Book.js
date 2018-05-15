@@ -4,6 +4,10 @@ import * as BooksAPI from '../../../src/utils/BooksAPI'
 
 class Book extends Component {
 	
+	state = {
+		selectedOption: this.props.currentShelf
+	}
+	
 	/*
 	export const update = (book, shelf) =>
 		fetch(`${api}/books/${book.id}`, {
@@ -16,25 +20,23 @@ class Book extends Component {
   	}).then(res => res.json())
 	*/
 	
-	state = {
-		selectedShelf: this.props.shelf
+	handleShelfChange = (selectedOption) => {
+		
+		this.setState({selectedOption: selectedOption});
+		
+		console.log('book state = ' + 
+					this.state.selectedOption);
+		
+		this.props.onChange(selectedOption);
+		
+//		BooksAPI.update(this.props.id, selectedOption)
+//			.then(result=>this.props.onChange(result.shelf))
 	}
-
-	handleChange = (selectedOption) => {
-		this.setState({selectedShelf: selectedOption});
-		console.log(this.state);
-	}
-		//use BooksAPI.update
-//		BooksAPI
-//			.update(this.props.id, this.state.selectedShelf)
-//			.then(result => console.log(result) 
 		
 	render(){
-		const { selectedShelf } = this.state;
-		const { details } = this.props;
+		const { title, subtitle, cover, currentShelf } = this.props;
 		
-		console.log(this.props.title);
-		console.log(this.state);
+		//console.log(title+'///shelf--> ' + currentShelf);
 						
 		return (
 				<div className='book'>
@@ -43,6 +45,7 @@ class Book extends Component {
 						<div className='dropdown__content'>
 							<h3 className='dropdown__title'>Move to...</h3>
 							<Select 
+								ref={(ref) => this.dropdown = ref}
 								className='dropdown__list'
 								name='Move to...'
 								onBlurResetsInpu={false}
@@ -50,9 +53,9 @@ class Book extends Component {
 								simpleValue
 								searchable={false}
 								clearable={false}
-								value={this.state.selectedShelf}
+								value={currentShelf}
 								onSelectResetInput={false}
-								onChange={this.handleChange}
+								onChange={this.handleShelfChange}
 								options={[
 									{value: 'currentlyReading', label: 'Currently reading'},
 									{value: 'wantToRead', label: 'Want to read'},
@@ -64,10 +67,11 @@ class Book extends Component {
 					<img 
 						className='book__img'
 						alt='Book cover'
-						src={details.imageLinks.thumbnail}/>
+						src={cover}
+					/>
 					<div className='book__info'>
-						<span className='book__title'><strong>{details.title}</strong></span>
-						<span className='book__subtitle'>{details.subtitle}</span>
+						<span className='book__title'><strong>{title}</strong></span>
+						<span className='book__subtitle'>{subtitle}</span>
 					</div>
 				</div>
 
