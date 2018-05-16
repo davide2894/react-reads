@@ -134,4 +134,17 @@ So books' ids are indeed registered and react knows which books it's dealing wit
 
 6:46am - I found a way to pass the selected value to parent child. I used two methods, one in parent, the other in child comp. Parent method is updating state w/param value. Child method is storing selection value with ref, then calls parent method via prop and passes selection in it. 
 
-Now I can call API to update
+Now I can call API to update.
+
+***
+
+# Day 9 - Wed 16/5/18
+6:30am - identify where books rendering happens when updated.
+9:33am - gosh I didnt' understand what `BooksAPI.update()` actually does. 
+What it does:
+* It takes a book, meaning all the book info, and the shelf you want to move it to
+* updated that book's shelf string
+* gives back an object of array, where each item is:
+	- shelfstring: [bookid, bookid, etc.]
+
+So now the books actually update, but only when page refreshes because I am not including this update result in the rendering method. 

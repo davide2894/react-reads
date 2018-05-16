@@ -4,14 +4,10 @@ import * as BooksAPI from '../../utils/BooksAPI'
 
 class Shelf extends Component {
 	
-	state = {
-		bookshelf: ''
-	}
-	
-	handleChange = (selectedOption) => {
-		console.log('option passed to shelf =' + selectedOption);
-		this.setState({bookshelf: selectedOption})
-		console.log('shelf state = ' + JSON.stringify(this.state));
+	handleChange = (newOrganization) => {
+		// send update to BookList
+		console.log(newOrganization);
+		this.props.onChange(newOrganization);
 	}
 	
 	render() {
@@ -24,6 +20,7 @@ class Shelf extends Component {
 				<div className="shelf__books">
 					{books.map((book) => 
 						<Book 
+							book={book}
 							title={book.title}
 							subtitle={book.subtitle}
 							cover={book.imageLinks.thumbnail}

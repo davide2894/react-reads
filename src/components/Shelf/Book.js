@@ -21,19 +21,16 @@ class Book extends Component {
 	*/
 	
 	handleShelfChange = (selectedOption) => {
-		
-		this.setState({selectedOption: selectedOption});
-		
-		console.log('book state = ' + 
-					this.state.selectedOption);
-		
-		this.props.onChange(selectedOption);
-		
-//		BooksAPI.update(this.props.id, selectedOption)
-//			.then(result=>this.props.onChange(result.shelf))
+				
+		this.setState({ selectedOption: selectedOption });
+						
+		BooksAPI.update(this.props.book, selectedOption).then(newOrganization => this.props.onChange(newOrganization))
 	}
 		
 	render(){
+		
+		let { selectedOption } = this.state;
+		
 		const { title, subtitle, cover, currentShelf } = this.props;
 		
 		//console.log(title+'///shelf--> ' + currentShelf);
@@ -53,7 +50,7 @@ class Book extends Component {
 								simpleValue
 								searchable={false}
 								clearable={false}
-								value={currentShelf}
+								value={selectedOption}
 								onSelectResetInput={false}
 								onChange={this.handleShelfChange}
 								options={[
