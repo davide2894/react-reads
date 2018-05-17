@@ -111,6 +111,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	z-index: 0;
 }
 
 .dropdown__button:focus{
@@ -119,7 +120,8 @@ body {
 }
 
 .dropdown__content {
-    //display: none;
+/*    display: none;*/
+	z-index: 1;
     background: #f8f8f8;
     font-size: 10px;
     -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);

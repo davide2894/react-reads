@@ -5,47 +5,67 @@ import * as BooksAPI from '../../../src/utils/BooksAPI'
 class Book extends Component {
 	
 	state = {
-		selectedOption: this.props.currentShelf
+		selectedOption: this.props.currentShelf,
+		displayDropDown: false
 	}
 	
 	handleBookChange = (selectedOption) => {
 				
 		this.setState({ selectedOption: selectedOption });
-						
-		BooksAPI.update(this.props.book, selectedOption).then(newOrganization => this.props.onChange(newOrganization))
+		
+		BooksAPI.update(this.props.book, selectedOption).then(
+			newOrganization => this.props.onChange(newOrganization)
+		)
+	}
+	
+	handleDropDown = () => {
+		
+		console.log('called handleDropDown');
+		
+		this.setState( (prevState) => 
+			({displayDropDown: !prevState.displayDropDown})
+		)
+		// alert(this.state.displayDropDown);
 	}
 		
 	render(){
 		
-		let { selectedOption } = this.state;
+		let { selectedOption, displayDropDown } = this.state;
+		
+		console.log('displayDropDown = ', displayDropDown);
 		
 		const { title, subtitle, cover } = this.props;
 								
 		return (
 				<div className='book'>
 					<div className='book__dropdown'>
-						<button className='dropdown__button'></button>
-						<div className='dropdown__content'>
-							<h3 className='dropdown__title'>Move to...</h3>
-							<Select 
-								ref={(ref) => this.dropdown = ref}
-								className='dropdown__list'
-								name='Move to...'
-								onBlurResetsInpu={false}
-								autoFocus
-								simpleValue
-								searchable={false}
-								clearable={false}
-								value={selectedOption}
-								onSelectResetInput={false}
-								onChange={this.handleBookChange}
-								options={[
-									{value: 'currentlyReading', label: 'Currently reading'},
-									{value: 'wantToRead', label: 'Want to read'},
-									{value: 'read', label: 'Have read'}
-								]}
-							/>
-						</div>						
+						<button
+							className='dropdown__button'
+							onClick={this.handleDropDown}
+						></button>
+						{ displayDropDown && (
+							<div className='dropdown__content'>
+									<h3 className='dropdown__title'>Move to...</h3>
+									<Select 
+										ref={(ref) => this.dropdown = ref}
+										className='dropdown__list'
+										name='Move to...'
+										onBlurResetsInpu={false}
+										autoFocus
+										simpleValue
+										searchable={false}
+										clearable={false}
+										value={selectedOption}
+										onSelectResetInput={false}
+										onChange={this.handleBookChange}
+										options={[
+											{value: 'currentlyReading', label: 'Currently reading'},
+											{value: 'wantToRead', label: 'Want to read'},
+											{value: 'read', label: 'Have read'}
+										]}
+									/>
+							</div>						
+						)}
 					</div>
 					<img 
 						className='book__img'
