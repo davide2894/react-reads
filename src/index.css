@@ -4,6 +4,10 @@ body {
 
 /* Header */
 
+.app {
+	overflow-x: hidden;
+}
+
 .header {
 	background-color: #222;
 	margin-bottom: 5em;		
@@ -83,8 +87,16 @@ body {
 .dropdown__button,
 .dropdown__content {
 	position: absolute;
+}
+
+.dropdown__button {
 	top: 135px;
 	left: 103px;
+}
+
+.dropdown__content {
+	top: 120px;
+	left: 60px;
 }
 
 .dropdown__button {
