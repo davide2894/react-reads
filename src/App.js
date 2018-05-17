@@ -21,8 +21,8 @@ class App extends Component {
 		this.getBooks();
 	}
 
-	handleChange = () => {
-		BooksAPI.getAll().then(	books => this.setState({books: books}));
+	handleAppChange = () => {
+		this.getBooks();
 	}
   	
     render() {
@@ -36,7 +36,7 @@ class App extends Component {
 						<Header/>
 						<BookList 
 							books={books}
-							onChange={this.handleChange}
+							onChange={this.handleAppChange}
 						/>
 					</div>)}
 				/>

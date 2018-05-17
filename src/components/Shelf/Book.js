@@ -8,19 +8,7 @@ class Book extends Component {
 		selectedOption: this.props.currentShelf
 	}
 	
-	/*
-	export const update = (book, shelf) =>
-		fetch(`${api}/books/${book.id}`, {
-		method: 'PUT',
-		headers: {
-		  ...headers,
-		  'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({ shelf })
-  	}).then(res => res.json())
-	*/
-	
-	handleShelfChange = (selectedOption) => {
+	handleBookChange = (selectedOption) => {
 				
 		this.setState({ selectedOption: selectedOption });
 						
@@ -31,10 +19,8 @@ class Book extends Component {
 		
 		let { selectedOption } = this.state;
 		
-		const { title, subtitle, cover, currentShelf } = this.props;
-		
-		//console.log(title+'///shelf--> ' + currentShelf);
-						
+		const { title, subtitle, cover } = this.props;
+								
 		return (
 				<div className='book'>
 					<div className='book__dropdown'>
@@ -52,7 +38,7 @@ class Book extends Component {
 								clearable={false}
 								value={selectedOption}
 								onSelectResetInput={false}
-								onChange={this.handleShelfChange}
+								onChange={this.handleBookChange}
 								options={[
 									{value: 'currentlyReading', label: 'Currently reading'},
 									{value: 'wantToRead', label: 'Want to read'},

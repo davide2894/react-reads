@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import Book from './Book'
-import * as BooksAPI from '../../utils/BooksAPI'
 
 class Shelf extends Component {
 	
-	handleChange = (newOrganization) => {
-		// send update to BookList
-		console.log(newOrganization);
+	handleShelfChange = (newOrganization) => {
 		this.props.onChange(newOrganization);
 	}
 	
@@ -27,7 +24,7 @@ class Shelf extends Component {
 							currentShelf={book.shelf}
 							id={book.id}
 							key={book.id}
-							onChange={this.handleChange}
+							onChange={this.handleShelfChange}
 						/>
 					)}
 				</div>

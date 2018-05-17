@@ -148,3 +148,10 @@ What it does:
 	- shelfstring: [bookid, bookid, etc.]
 
 So now the books actually update, but only when page refreshes because I am not including this update result in the rendering method. 
+
+6:48pm - finally got it. All I had to do was to lift state up one level more and theb, from App.js, fetch all books when change is detected.
+
+***
+
+# Day 10 - Thu 17/5/18
+5:59am - continue from yesterday. Within 9:30 I should send this app to Renato.
