@@ -9,7 +9,7 @@ class Header extends Component {
 				<div className="header__content">
 					<h1 className='header__title'>React Reads</h1>
 					<Link 
-						to='/search'
+						to={`${process.env.PUBLIC_URL}/search`}
 						className='header__search-link'
 						title='Search a book'
 					>

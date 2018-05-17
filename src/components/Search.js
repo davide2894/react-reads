@@ -9,7 +9,7 @@ class Search extends Component {
 				<div className='searchbar__content'>	
 					<Link
 						className='searchbar__link-to-home' 
-						to='/'
+						to={`${process.env.PUBLIC_URL}/`}
 					/>
 					<input 
 						className='searchbar__input'

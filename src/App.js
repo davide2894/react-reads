@@ -24,14 +24,17 @@ class App extends Component {
 	handleAppChange = () => {
 		this.getBooks();
 	}
+	
   	
     render() {
+
+		const baseUrl = process.env.PUBLIC_URL;
 		
 		let { books } = this.state
 		
 		return (
 			<div className='app'>
-			  <Route exact path='/' render={()=>(
+			  <Route exact path={baseUrl + '/'} render={()=>(
 					<div>
 						<Header/>
 						<BookList 
@@ -40,7 +43,7 @@ class App extends Component {
 						/>
 					</div>)}
 				/>
-				<Route path='/search' component={Search} />
+				<Route path={baseUrl + '/search'} component={Search} />
 			</div>
 		)
     }
