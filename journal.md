@@ -155,3 +155,6 @@ So now the books actually update, but only when page refreshes because I am not 
 
 # Day 10 - Thu 17/5/18
 5:59am - continue from yesterday. Within 9:30 I should send this app to Renato.
+Before even implementing search I must handle the book button. What should do:
+- on user click I want it to display the dropdown. 
+- when user clicks outside book (lose focus) switch back to icon
