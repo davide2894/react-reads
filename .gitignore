@@ -19,3 +19,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# hot updates
+hot/hot-update.js
+hot/hot-update.json
