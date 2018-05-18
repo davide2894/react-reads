@@ -195,12 +195,7 @@ Loader should be placed in App because it involves the entire page.
 [x] i react-transition-group and import in App
 [x] create Loader (html, css)
 [x] import Loader into App
-[x] Insert 
-	BookList
-	CSSTransition 
-	Loader
-	
-
+[x] Insert CSSTransition 
 	
 Doesn't have to be nested because it's going to be a simple full-screen modal w/z-index = 2
 
@@ -220,6 +215,18 @@ Check rubric and udacityREADME
 
 As user types:
 - input state updates
-- 
+- when search term is given
+	* if it's among the ones in SEARCH_TERMS.md:
+		* get books in whose obj the search pattern is matched
+	* else: 
+		* display error message like 'Oh shoot, there is no book like that :('
+	
+Or is it better to make an api call each time state updates? Mh. Better search on that.
 
+6:11pm - ok so books from search results actually render now. API seems slow to update search results when change pattern changes. 
 
+TODO:
+- see why some books are fetched multiple times (Linux book)
+- style book results
+- implement Loader among search API calls
+- implement suggestions
