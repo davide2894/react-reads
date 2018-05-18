@@ -2,6 +2,17 @@ body {
 	font-family: sans-serif;
 }
 
+/* Keyframes */
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 /* Header */
 
 .app {
@@ -295,7 +306,6 @@ Select-value-label[style] {
 }
 
 .Loader-enter-active {
-	/*	animation: fadeIn 1s linear;*/
 	transition: 300ms ease-in;
 	opacity: 0.5;
 }
@@ -306,7 +316,6 @@ Select-value-label[style] {
 }
 
 .Loader-exit-active {
-/*	animation: fadeOut 1s linear;	*/
 	opacity: 0;
 	transition: all 300ms ease-out;
 }
