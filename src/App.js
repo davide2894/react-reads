@@ -78,7 +78,7 @@ class App extends Component {
 						<CSSTransition
 							in={showLoader}
 							classNames='Loader'
-							timeout={0}
+							timeout={2000}
 							appear={true}
 							unmountOnExit
 						>

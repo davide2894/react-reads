@@ -209,3 +209,17 @@ Make modal take full screen. Check how you did it in game.
 8:09am - was missing positon: fixed, left: 0 and top: 0.
 
 9:38 - implemented loader. Key was updating state befre and after API calls.
+
+10:04 - now dropdown is toggled on btn click and onBlur
+
+Task: should implement search feature now, while waiting for Roll feedback
+
+What should Search do?
+
+Check rubric and udacityREADME
+
+As user types:
+- input state updates
+- 
+
+

@@ -172,6 +172,8 @@ v0. with drawings of home and search screens:
 	v	* build styles
 	v	* use props to pass data from parent to child
 2. build interactivity
-	- identify where UI state changes
-	- build states
-	- implement routes
+	v identify where UI state changes
+	v build states
+	v implement routes
+	v implement book change among shelves
+	v implement search
