@@ -6,7 +6,8 @@ class Book extends Component {
 	
 	state = {
 		selectedOption: this.props.currentShelf,
-		displayDropDown: false
+		displayDropDown: false,
+		displayButton: true
 	}
 	
 	handleBookChange = (selectedOption) => {
@@ -18,19 +19,20 @@ class Book extends Component {
 		)
 	}
 	
-	handleDropDown = () => {
+	toggleDropDown = () => {
 		
-		console.log('called handleDropDown');
+		console.log('called toggleDropDown');
 		
-		this.setState( (prevState) => (
-			{displayDropDown: !prevState.displayDropDown}
-		))
+		this.setState( (prevState) => ({
+			displayDropDown: !prevState.displayDropDown,
+			displayButton: !prevState.displayButton
+		}))
 		// alert(this.state.displayDropDown);
 	}
 		
 	render(){
 		
-		let { selectedOption, displayDropDown } = this.state;
+		let { selectedOption, displayDropDown, displayButton } = this.state;
 		
 		console.log('displayDropDown = ', displayDropDown);
 		
@@ -39,10 +41,12 @@ class Book extends Component {
 		return (
 				<div className='book'>
 					<div className='book__dropdown'>
-						<button
-							className='dropdown__button'
-							onClick={this.handleDropDown}
-						></button>
+						{ displayButton && (
+							<button
+								className='dropdown__button'
+								onClick={this.toggleDropDown}
+							></button>
+						)}
 						{ displayDropDown && (
 							<div className='dropdown__content'>
 									<h3 className='dropdown__title'>Move to...</h3>
@@ -58,6 +62,7 @@ class Book extends Component {
 										value={selectedOption}
 										onSelectResetInput={false}
 										onChange={this.handleBookChange}
+										onBlur={this.toggleDropDown}
 										options={[
 											{value: 'currentlyReading', label: 'Currently reading'},
 											{value: 'wantToRead', label: 'Want to read'},

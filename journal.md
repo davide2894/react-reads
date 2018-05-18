@@ -173,7 +173,8 @@ v eliminate auto creation of hot update commits
 On to the task for the day.
 
 TODO: 
-* improve loader with React Transitionn Group to entertain user during API fetch
+[x] improve loader with React Transitionn Group to entertain user during API fetch
+[x] return to button def when dropdown loses focus
 * implement search feature
 
 Task: improve loader with React Transitionn Group to entertain user during API fetch
@@ -193,14 +194,18 @@ Loader should be placed in App because it involves the entire page.
 
 [x] i react-transition-group and import in App
 [x] create Loader (html, css)
-- import Loader into App
-- Insert 
+[x] import Loader into App
+[x] Insert 
 	BookList
 	CSSTransition 
 	Loader
+	
+
 	
 Doesn't have to be nested because it's going to be a simple full-screen modal w/z-index = 2
 
 Make modal take full screen. Check how you did it in game. 
 
 8:09am - was missing positon: fixed, left: 0 and top: 0.
+
+9:38 - implemented loader. Key was updating state befre and after API calls.
