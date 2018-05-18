@@ -22,9 +22,9 @@ class Book extends Component {
 		
 		console.log('called handleDropDown');
 		
-		this.setState( (prevState) => 
-			({displayDropDown: !prevState.displayDropDown})
-		)
+		this.setState( (prevState) => (
+			{displayDropDown: !prevState.displayDropDown}
+		))
 		// alert(this.state.displayDropDown);
 	}
 		

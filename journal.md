@@ -159,8 +159,48 @@ So now the books actually update, but only when page refreshes because I am not 
 Before even implementing search I must handle the book button. What should do:
 - on user click I want it to display the dropdown. 
 - when user clicks outside book (lose focus) switch back to icon
-Done with functional state
+Done with functional state.
 
 TODO:
-* eliminate auto creation of hot update commits
-* implement search 
+v eliminate auto creation of hot update commits
+* improve loader with React Transitionn Group to entertain user during API fetch
+* implement search feature
+
+***
+
+# Day 11 - Fri 18/5/18
+6:15am - corrected typo in webpack.confing.dev > output that was breaking webpack on npm start.
+On to the task for the day.
+
+TODO: 
+* improve loader with React Transitionn Group to entertain user during API fetch
+* implement search feature
+
+Task: improve loader with React Transitionn Group to entertain user during API fetch
+Should understand how transition group work.
+
+So I should use { CSSTransition } to handle the loading screen. 
+Ok I can create a loader with css. But CSST adds classes. 
+When user changes shelf:
+- this.state.showLoader = true
+- CSS Transition is triggered
+- Loader inside Transition
+- fadein on loader modal
+- show loader modal
+- fadeout when API call is done
+
+Loader should be placed in App because it involves the entire page. 
+
+[x] i react-transition-group and import in App
+[x] create Loader (html, css)
+- import Loader into App
+- Insert 
+	BookList
+	CSSTransition 
+	Loader
+	
+Doesn't have to be nested because it's going to be a simple full-screen modal w/z-index = 2
+
+Make modal take full screen. Check how you did it in game. 
+
+8:09am - was missing positon: fixed, left: 0 and top: 0.

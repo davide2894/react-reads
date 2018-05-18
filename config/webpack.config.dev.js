@@ -59,15 +59,16 @@ module.exports = {
     // served by WebpackDevServer in development. This is the JS bundle
     // containing code from all our entry points, and the Webpack runtime.
     filename: 'static/js/bundle.js',
+	// See https://github.com/gaearon/react-hot-loader/issues/456
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json',
     // There are also additional JS chunk files if you use code splitting.
-    chunkFilename: 'static/js/[name].chunk.js',
-	hotUpdateChunkFileName: 'hot/hot-update.js',
-	hotUpdateMainFileName: 'hot/hot-update.json',
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+    chunkFilename: 'static/js/[name].chunk.js',
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
