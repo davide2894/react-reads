@@ -230,3 +230,10 @@ TODO:
 - style book results
 - implement Loader among search API calls
 - implement suggestions
+
+***
+
+# Day 12 - Sat 19/5/18
+6:07am - continue.
+
+Look into the search term in md, where it says allowed ones.

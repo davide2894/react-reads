@@ -63,9 +63,7 @@ class App extends Component {
 		const baseUrl = process.env.PUBLIC_URL;
 		
 		let { books, showLoader } = this.state
-		
-		console.log('showLoader = ', showLoader);
-		
+				
 		return (
 			<div className='app'>
 			  <Route exact path={baseUrl + '/'} render={()=>(

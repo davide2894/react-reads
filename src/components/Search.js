@@ -5,10 +5,19 @@ import * as BooksAPI from '.././utils/BooksAPI'
 
 class Search extends Component {
 	
-	state = {
-		query: '',
-		results: []
+	constructor(props){
+		
+		super(props);
+		
+		this.state = {
+			query: '',
+			results: []
+		};
+		
+		this.handleQuery = this.handleQuery.bind(this);
+		this.search = this.search.bind(this);
 	}
+	
 	
 	search = () => {
 		BooksAPI.search(this.state.query).then(data => {
@@ -24,16 +33,12 @@ class Search extends Component {
 		this.search();
 	}
 	
-//	showResults = () => {
-//		this.state.results.map(result => )
-//	}
-	
 	
 	render(){
 		
-		let { results } = this.state;
+		let { results = [] } = this.state;
 		
-		if(results !== undefined){
+		if(results.length){
 			console.log(results);
 		}
 		
@@ -56,21 +61,20 @@ class Search extends Component {
 						</form>
 					</div>
 				</div>
-				{ results !== undefined && (
-					<div className='results'>
-						{results.map(result => 
+				<div className='results'>
+					{results.map((result) => 
 							<Book
 								book={result}
+								cover={result.imageLinks.thumbnail}
 								title={result.title}
 								subtitle={result.subtitle}
-								cover={result.imageLinks.thumbnail}
 								currentShelf={result.shelf}
 								id={result.id}
 								key={result.id}
 								onChange={this.handleShelfChange}
-							/>)}
-					</div>			
-				)}
+							/>)
+					}
+				</div>			
 			</div>
 		)
 	}
