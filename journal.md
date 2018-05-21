@@ -237,3 +237,24 @@ TODO:
 6:07am - continue.
 
 Look into the search term in md, where it says allowed ones.
+
+***
+
+# Day 13 - Mon 21/5/18
+6:50am - seem to have solved it. Some books don't have the imageLinks property. For now I don't show those, but it's an incomplete solution. I should display them but with a placeholder image.
+Instead of showing a placeholder img.
+
+TODO:
+[x] place placeholder img when needed
+[x] implement move of searched book
+[x] style results grid
+[x] search results are not shown when all of the text is deleted out of the search input box.
+[x] style search errors
+[x] add none option to dropdown
+- if book has shelf, show selection in /search results too
+- when click on None, remove book from shelf
+- implement suggestions
+- style suggestions
+- implement Loader among search API calls
+
+1:45 - BooksAPI.getAll() and BooksAPI.Search() give back two different version of the same book, where the second lacks shelf property. Why?

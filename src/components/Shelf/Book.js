@@ -5,13 +5,13 @@ import * as BooksAPI from '../../../src/utils/BooksAPI'
 class Book extends Component {
 	
 	state = {
-		selectedOption: this.props.currentShelf,
+		selectedOption: '',
 		displayDropDown: false,
 		displayButton: true
 	}
 	
 	handleBookChange = (selectedOption) => {
-				
+		
 		this.setState({ selectedOption: selectedOption });
 		
 		BooksAPI.update(this.props.book, selectedOption).then(
@@ -20,24 +20,24 @@ class Book extends Component {
 	}
 	
 	toggleDropDown = () => {
-		
-		console.log('called toggleDropDown');
-		
+				
 		this.setState( (prevState) => ({
 			displayDropDown: !prevState.displayDropDown,
 			displayButton: !prevState.displayButton
 		}))
-		// alert(this.state.displayDropDown);
+		
+		console.log('current shelf = ', this.state.selectedOption);
+		
 	}
+	
 		
 	render(){
 		
 		let { selectedOption, displayDropDown, displayButton } = this.state;
+		const { title, subtitle, cover, currentShelf } = this.props;
 		
-		console.log('displayDropDown = ', displayDropDown);
-		
-		const { title, subtitle, cover } = this.props;
-								
+		console.log(this.props.currentShelf)
+				
 		return (
 				<div className='book'>
 					<div className='book__dropdown'>
@@ -51,7 +51,6 @@ class Book extends Component {
 							<div className='dropdown__content'>
 									<h3 className='dropdown__title'>Move to...</h3>
 									<Select 
-										ref={(ref) => this.dropdown = ref}
 										className='dropdown__list'
 										name='Move to...'
 										onBlurResetsInpu={false}
@@ -59,21 +58,23 @@ class Book extends Component {
 										simpleValue
 										searchable={false}
 										clearable={false}
-										value={selectedOption}
+										value={selectedOption ? selectedOption : 'none'}
 										onSelectResetInput={false}
+										removeSelected={false}
 										onChange={this.handleBookChange}
 										onBlur={this.toggleDropDown}
 										options={[
 											{value: 'currentlyReading', label: 'Currently reading'},
 											{value: 'wantToRead', label: 'Want to read'},
-											{value: 'read', label: 'Have read'}
+											{value: 'read', label: 'Have read'},
+											{value: 'none', label: 'None'}
 										]}
 									/>
 							</div>						
 						)}
 					</div>
 					<img 
-						className='book__img'
+						className='book__cover book__cover--placeholder'
 						alt='Book cover'
 						src={cover}
 					/>

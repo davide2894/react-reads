@@ -29,26 +29,31 @@ class App extends Component {
 				books: books
 			});
 			
-			// console.log('fetched books');
+			console.log('fetched books', this.state.books);
 			// console.log('showLoader = ', this.state.showLoader);
 			
 			this.updateLoaderState();
 		})
 	}
 	
+	searchBooks = (userQuery) => {
+		BooksAPI.search(userQuery).then(books => {
+			this.setState({
+				books: books
+			})
+		})
+	}
+	
 	componentDidMount(){		
 		this.updateLoaderState();
 		this.getBooks();
+		this.setDefShelf();
 	}
 
 	handleAppChange = () => {
-		
-		// console.log('handling shelf change...');
-		
+				
 		this.updateLoaderState();
 		
-		// console.log('showLoader = ', this.state.showLoader);
-
 		this.getBooks();
 	}
 	
@@ -57,6 +62,14 @@ class App extends Component {
 		this.handleAppChange();
 	}
 	
+	setDefShelf = () => {
+		// for each book set shelf to its shelf
+		let shelf;
+		this.state.books.map(
+			book => BooksAPI.get(book.id).then(
+				book => this.setState(prevState => ({shelves: prevState.shelves.push(book.shelf)})))
+		)
+	}
   	
     render() {
 
@@ -71,6 +84,7 @@ class App extends Component {
 						<Header/>
 						<BookList 
 							books={books}
+							shelves={this.state.shelves}
 							onChange={this.handleAppChange}
 						/>
 						<CSSTransition
@@ -84,7 +98,12 @@ class App extends Component {
 						</CSSTransition>
 					</div>)}
 				/>
-				<Route path={baseUrl + '/search'} component={Search} />
+				<Route path={baseUrl + '/search'} render={() => (
+						<Search 
+							books={books}
+							onChange={this.handleAppChange}
+						/>)
+				} />
 			</div>
 		)
     }

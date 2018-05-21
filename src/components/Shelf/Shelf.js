@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Book from './Book'
+import * as BooksAPI from '../../../src/utils/BooksAPI'
 
 class Shelf extends Component {
 	
 	handleShelfChange = (newOrganization) => {
 		this.props.onChange(newOrganization);
-	}
+	}	
 	
 	render() {
 		
