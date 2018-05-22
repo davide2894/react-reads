@@ -11,7 +11,7 @@ class App extends Component {
 			
 	state = {
 		books: [],
-		showLoader: false
+		showLoader: false,
 	}
 	
 	updateLoaderState = () => {
@@ -21,55 +21,28 @@ class App extends Component {
 	}
 	
 	getBooks = () => {
-		
-		//console.log('fetching books');
-		
+				
 		BooksAPI.getAll().then(books => {
 			this.setState({
 				books: books
 			});
-			
-			console.log('fetched books', this.state.books);
-			// console.log('showLoader = ', this.state.showLoader);
-			
+						
 			this.updateLoaderState();
-		})
-	}
-	
-	searchBooks = (userQuery) => {
-		BooksAPI.search(userQuery).then(books => {
-			this.setState({
-				books: books
-			})
 		})
 	}
 	
 	componentDidMount(){		
 		this.updateLoaderState();
 		this.getBooks();
-		this.setDefShelf();
 	}
 
 	handleAppChange = () => {
-				
+		
 		this.updateLoaderState();
 		
 		this.getBooks();
 	}
-	
-	ComponentWillUpdate(){
-		this.updateLoaderState();
-		this.handleAppChange();
-	}
-	
-	setDefShelf = () => {
-		// for each book set shelf to its shelf
-		let shelf;
-		this.state.books.map(
-			book => BooksAPI.get(book.id).then(
-				book => this.setState(prevState => ({shelves: prevState.shelves.push(book.shelf)})))
-		)
-	}
+
   	
     render() {
 
@@ -99,11 +72,15 @@ class App extends Component {
 					</div>)}
 				/>
 				<Route path={baseUrl + '/search'} render={() => (
-						<Search 
-							books={books}
-							onChange={this.handleAppChange}
-						/>)
-				} />
+						<div>
+							<Search 
+								books={books}
+								showLoader={this.state.showLoader}
+								onChange={this.handleAppchChange}
+								onResultsChange={this.handleResultsChange}
+							/>
+						</div>)}
+				/>
 			</div>
 		)
     }

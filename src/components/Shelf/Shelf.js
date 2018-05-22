@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Book from './Book'
-import * as BooksAPI from '../../../src/utils/BooksAPI'
 
 class Shelf extends Component {
 	
@@ -11,7 +10,7 @@ class Shelf extends Component {
 	render() {
 		
 		const { books, title } = this.props;
-				
+			
 		return (
 			<div className='shelf'>
 				<h1 className='shelf__title'>{title}</h1>

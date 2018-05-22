@@ -251,10 +251,28 @@ TODO:
 [x] search results are not shown when all of the text is deleted out of the search input box.
 [x] style search errors
 [x] add none option to dropdown
-- if book has shelf, show selection in /search results too
+[x] if book has shelf, show selection in /search results too
+- implement Loader among search API calls
 - when click on None, remove book from shelf
 - implement suggestions
 - style suggestions
-- implement Loader among search API calls
+- add publisher
+- style publisher
 
-1:45 - BooksAPI.getAll() and BooksAPI.Search() give back two different version of the same book, where the second lacks shelf property. Why?
+***
+
+# Day 14 - Tue 22/5/18
+
+5:37am - continue from yesterday. 
+Books coming from api search don't have shelf key. But if I iterate through all the books and, for each book, use api get - I obtain the shelf. 
+Should make sure that books have the correct state from the beginning, and this is possible with get. So in Book.js I must set selectedOption to the value returned from BooksAPI.get()
+Like this it seems to work but with one issue: the shelf loads after the book is rendered due to async call. But books should render only when shelf is loaded. So either put a transition in there OR map all the books and for each, get its id and push it to results[] in componentWillMount.
+Fixed it: Book comp renders only when selectedOption state is defined.
+
+Next is to insert a transition while books render in search. 
+I want the transition to start when BooksAPI.search() is called, and to stop when books are rendered.
+I set it in search by copying transition funcs in it, but it's an ugly solution.
+Besides, in main page transition unmounts as soon as the books load.
+2:46pm - kinda working. Put `<CSSTransition>` outside conditional rendering. But now, after second search loader state stays true.
+Interesting. If query 'art' and then type i query doesn't become 'arti'.
+

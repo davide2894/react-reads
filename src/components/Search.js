@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group'
+import Loader from './Loader'
 import Book from './Shelf/Book'
 import coverPlaceholder from '../assets/cover-placeholder.jpg'
 import * as BooksAPI from '.././utils/BooksAPI'
@@ -12,54 +14,57 @@ class Search extends Component {
 		
 		this.state = {
 			query: '',
-			results: []
+			results: [],
+			showSearchLoader: false
 		};
 		
 		this.handleQuery = this.handleQuery.bind(this);
 		this.search = this.search.bind(this);
 	}
 	
-	componentDidMount(){
-		this.handleQuery()
+	handleQuery = (userQuery) => {
+		console.log('QUERY updated');
+		this.setState({
+			query: 	userQuery.trim()
+		})
+		if(this.state.query !== ''){
+			this.search()
+		}
 	}
-		
+	
 	search = () => {
+		console.log('calling search...');
+		console.log('QUERY: ', this.state.query);
+		console.log('updating loader from this.search()');
 		
 		BooksAPI.search(this.state.query).then(books => {
 		   this.setState({results: books})
-		})
+		});
 	}
-	
-	handleQuery = (userQuery) => {
-		
-		this.setState({
-			query: userQuery
-		})
 
-		//console.log(this.state)
-		this.search();
-
-	}
-	
-	handleChangeFromSearch = (newOrganization) => {
+	handleShelfChange = (newOrganization) => {
 		this.props.onChange(newOrganization)
 	}
 	
+	handleResultsChange = () => {
+		console.log('updating loader from this.handleResultChange()');
+		this.setState({showSearchLoader: false});
+	}
 	
-		
+	updateSearchLoader(){
+		this.setState((prevState)=>({
+			showSearchLoader: !prevState.showSearchLoader
+		}));	
+	}
+	
+	componentDidUpdate(){
+		console.log('UPDATED');
+	}
+
 	render(){
 		
-		let { results = [], query } = this.state;
-				
-		if(results.length>0){
-			console.log('results = ', results);
-		}																								
-
-		
-		/*if(results.length){
-			console.log(results);
-		}*/
-		
+		let { results, query, showSearchLoader } = this.state;
+		console.log('showLoader: ', this.state.showSearchLoader)
 		return(
 			<div>
 				<div className='searchbar'>
@@ -68,40 +73,44 @@ class Search extends Component {
 							className='searchbar__link-to-home' 
 							to={`${process.env.PUBLIC_URL}/`}
 						/>
-						<form className='form'>						
+						<div className='form'>						
 							<input 
 								className='form__input'
 								placeholder='Search a book...'
-								autoFocus
+								
+								value={query}
 								onChange={(event) =>
 								this.handleQuery(event.target.value)}	
 							/>
-						</form>
+						</div>
 					</div>
 				</div>
-				{query ? (
-					results.length ? (
-						<div className='results'>
+				 {query.length > 0 ? (
+					results && results.length > 0 ? (
+						<div className='results' onLoad={this.handleResultsChange}>
 							{results.map(result => 
 									<Book
 										book={result}
 										cover={result.imageLinks ? (result.imageLinks.thumbnail ? result.imageLinks.thumbnail : result.imageLinks.smallThumbnail) : coverPlaceholder}
 										title={result.title}
 										subtitle={result.subtitle}
-										currentShelf={result.shelf}
 										id={result.id}
 										key={result.id}
-										onChange={this.handleChangeFromSearch}
+										onChange={this.handleShelfChange}
 									/>
 								)
 							}
-						</div>) : (
-						<div className='search-error'>
-							<p>No book like that : / </p>
-						</div>
-						)
-				) : (<div className='search-error'><p>Nothing to show </p></div>) 
-				}
+						</div>) : (<div className='search-error'>Nothing matches : /</div>)				
+				 ) : (<div className='search-error'>What are you looking for?</div>)}
+				<CSSTransition
+					in={showSearchLoader}
+					classNames='Loader'
+					timeout={2000}
+					appear={true}
+					unmountOnExit
+				>
+					<Loader/>							
+				</CSSTransition>
 			</div>
 		)
 	}
