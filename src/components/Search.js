@@ -23,22 +23,30 @@ class Search extends Component {
 	}
 	
 	handleQuery = (userQuery) => {
-		console.log('QUERY updated');
+		
+		let updatedQuery = userQuery;
+		
 		this.setState({
 			query: 	userQuery.trim()
 		})
-		if(this.state.query !== ''){
-			this.search()
-		}
+		this.search(updatedQuery);
 	}
 	
-	search = () => {
-		console.log('calling search...');
-		console.log('QUERY: ', this.state.query);
-		console.log('updating loader from this.search()');
+	search = (updatedQuery) => {
+		//console.log('calling search...');
+		//console.log('QUERY: ', this.state.query);
+		//console.log('updating loader from this.search()');
+		let prevResJSON = JSON.stringify(this.state.results);
+
+		this.setState({showSearchLoader: true});
 		
-		BooksAPI.search(this.state.query).then(books => {
-		   this.setState({results: books})
+		BooksAPI.search(updatedQuery).then(books => {
+			if(JSON.stringify(books) === prevResJSON){
+				console.log('JSONs are true');
+				this.setState({showSearchLoader: false});
+			} else {
+				this.setState({results: books})
+			}
 		});
 	}
 
@@ -55,10 +63,6 @@ class Search extends Component {
 		this.setState((prevState)=>({
 			showSearchLoader: !prevState.showSearchLoader
 		}));	
-	}
-	
-	componentDidUpdate(){
-		console.log('UPDATED');
 	}
 
 	render(){
@@ -105,7 +109,7 @@ class Search extends Component {
 				<CSSTransition
 					in={showSearchLoader}
 					classNames='Loader'
-					timeout={2000}
+					timeout={300}
 					appear={true}
 					unmountOnExit
 				>

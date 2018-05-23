@@ -252,7 +252,9 @@ TODO:
 [x] style search errors
 [x] add none option to dropdown
 [x] if book has shelf, show selection in /search results too
-- implement Loader among search API calls
+- Loader stops if query brings same results
+- Loader stops when no results
+- Loader stops when query is deleted
 - when click on None, remove book from shelf
 - implement suggestions
 - style suggestions
@@ -276,3 +278,7 @@ Besides, in main page transition unmounts as soon as the books load.
 2:46pm - kinda working. Put `<CSSTransition>` outside conditional rendering. But now, after second search loader state stays true.
 Interesting. If query 'art' and then type i query doesn't become 'arti'.
 
+***
+
+# Day 15 - Tue 23/5/18
+continue. 
