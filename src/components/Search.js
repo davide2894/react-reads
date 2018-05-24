@@ -15,6 +15,8 @@ class Search extends Component {
 		this.state = {
 			query: '',
 			results: [],
+			showRes: false,
+			showErrMsg: false,
 			showSearchLoader: false
 		};
 		
@@ -25,22 +27,34 @@ class Search extends Component {
 	handleQuery = (userQuery) => {
 		
 		let updatedQuery = userQuery;
-		
+
 		this.setState({
 			query: 	userQuery.trim()
 		})
-		this.search(updatedQuery);
+
+		if(this.state.query !== '' || this.state.query !== undefined){
+			console.log(this.state.query);			
+			this.search(updatedQuery);
+		}
+
 	}
 	
 	search = (updatedQuery) => {
-		//console.log('calling search...');
-		//console.log('QUERY: ', this.state.query);
-		//console.log('updating loader from this.search()');
+
 		let prevResJSON = JSON.stringify(this.state.results);
 
 		this.setState({showSearchLoader: true});
 		
 		BooksAPI.search(updatedQuery).then(books => {
+			
+			if(!this.state.query){
+				this.setState({showSearchLoader: false})
+			} 
+
+			if(books && !books.length){
+				this.setState({showSearchLoader: false})
+			}
+			
 			if(JSON.stringify(books) === prevResJSON){
 				console.log('JSONs are true');
 				this.setState({showSearchLoader: false});
@@ -55,7 +69,7 @@ class Search extends Component {
 	}
 	
 	handleResultsChange = () => {
-		console.log('updating loader from this.handleResultChange()');
+		//console.log('updating loader from this.handleResultChange()');
 		this.setState({showSearchLoader: false});
 	}
 	
@@ -68,38 +82,13 @@ class Search extends Component {
 	render(){
 		
 		let { results, query, showSearchLoader } = this.state;
-		console.log('showLoader: ', this.state.showSearchLoader)
 		
-		// Write a schme of the if/else logic in render and
-		// identify where it refers to state
-		// Set vars
-		// If/else conditionals here and store outputs in vars
-		// Use {} in render, where {} is if/else output (stored in vards)
-	
-		/*
-		
-		let 
-		
-		if(this.state.query.length > 0){
-			if(this.state.results && this.state.results > 0){
-				<Resutls></Resutls>
-				this.setState({showRes: true})
-			} else {
-				<div className='search-error'>Nothing matches : /</div>
-				this.setState({showErrMsg: true})
-			}
-		} else {
-			<div className='search-error'>What are you looking for?</div>
-			this.setState({showErrMsg: true})
+		let searchErr = null;
+		if(!query.length){
+			searchErr = 'What are you looking for?';
+		} else if(results && !results.length) {
+			searchErr = 'Nothing matches : /';		
 		}
-		
-		IN RETURN
-		
-		{this.state.showRes && 
-			jsx code for results
-		}
-		*/
-		
 			
 		return(
 			<div>
@@ -113,7 +102,6 @@ class Search extends Component {
 							<input 
 								className='form__input'
 								placeholder='Search a book...'
-								
 								value={query}
 								onChange={(event) =>
 								this.handleQuery(event.target.value)}	
@@ -121,29 +109,32 @@ class Search extends Component {
 						</div>
 					</div>
 				</div>
-				 {query.length > 0 ? (
-					results && results.length > 0 ? (
-						<div className='results' onLoad={this.handleResultsChange}>
-							{results.map(result => 
-									<Book
-										book={result}
-										cover={result.imageLinks ? (result.imageLinks.thumbnail ? result.imageLinks.thumbnail : result.imageLinks.smallThumbnail) : coverPlaceholder}
-										title={result.title}
-										subtitle={result.subtitle}
-										id={result.id}
-										key={result.id}
-										onChange={this.handleShelfChange}
-									/>
-								)
-							}
-						</div>) : (<div className='search-error'>Nothing matches : /</div>)				
-				 ) : (<div className='search-error'>What are you looking for?</div>)}
+				 
+				{results && results.length && (
+					<div className='results' onLoad={this.handleResultsChange}>
+						{results.map(result => 
+								<Book
+									book={result}
+									cover={result.imageLinks ? (result.imageLinks.thumbnail ? result.imageLinks.thumbnail : result.imageLinks.smallThumbnail) : coverPlaceholder}
+									title={result.title}
+									subtitle={result.subtitle}
+									id={result.id}
+									key={result.id}
+									onChange={this.handleShelfChange}
+								/>
+							)
+						}
+					</div>				
+				)}
+				
+				{!!searchErr &&  <div className='search-error'>{searchErr}</div>}
+				
 				<CSSTransition
 					in={showSearchLoader}
 					classNames='Loader'
 					timeout={300}
 					appear={true}
-					unmountOnExit
+					unmountOnExit={true}
 				>
 					<Loader/>							
 				</CSSTransition>

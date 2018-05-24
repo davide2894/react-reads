@@ -253,13 +253,16 @@ TODO:
 [x] add none option to dropdown
 [x] if book has shelf, show selection in /search results too
 [x] Loader stops if query brings same results
-- Loader stops when no results
-- Loader stops when query is deleted
+[x] Loader stops when no results
+[x] Task: Loader doesn't fire when query is ''.
+- Loader fade-in is not smooth
+- Loader doesn't fire while typing. It fires when user finishes to type
 - when click on None, remove book from shelf
 - implement suggestions
 - style suggestions
 - add publisher
 - style publisher
+- refactor if/else statements inside render->return
 
 ***
 
@@ -287,4 +290,11 @@ continue.
 
 # Day 16 - Wed 24/5/18
 8:15am - continue. 
-Task: Loader stops when no results.
+
+Task: Optimize Search so that it uses getAll instead of search() + get().
+
+API available enpoints don't let that. Need to look if I can edit availablen endpoints. Can't edit because don't have permission to do so.
+
+3:39pm - Task: Loader doesn't fire when query is ''. Ok, so works but doesn't show what are you looking for in this case
+
+

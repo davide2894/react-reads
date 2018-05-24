@@ -40,7 +40,7 @@ class Book extends Component {
 		
 		let { selectedOption, displayDropDown, displayButton } = this.state;
 		const { title, subtitle, cover } = this.props;
-		console.log('Render Book');
+		//console.log('Render Book');
 		return (
 				<div>
 					{selectedOption && (

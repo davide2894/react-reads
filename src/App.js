@@ -63,9 +63,9 @@ class App extends Component {
 						<CSSTransition
 							in={showLoader}
 							classNames='Loader'
-							timeout={2000}
+							timeout={300}
 							appear={true}
-							unmountOnExit
+							unmountOnExit={true}
 						>
 							<Loader/>							
 						</CSSTransition>
