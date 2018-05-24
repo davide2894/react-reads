@@ -69,6 +69,38 @@ class Search extends Component {
 		
 		let { results, query, showSearchLoader } = this.state;
 		console.log('showLoader: ', this.state.showSearchLoader)
+		
+		// Write a schme of the if/else logic in render and
+		// identify where it refers to state
+		// Set vars
+		// If/else conditionals here and store outputs in vars
+		// Use {} in render, where {} is if/else output (stored in vards)
+	
+		/*
+		
+		let 
+		
+		if(this.state.query.length > 0){
+			if(this.state.results && this.state.results > 0){
+				<Resutls></Resutls>
+				this.setState({showRes: true})
+			} else {
+				<div className='search-error'>Nothing matches : /</div>
+				this.setState({showErrMsg: true})
+			}
+		} else {
+			<div className='search-error'>What are you looking for?</div>
+			this.setState({showErrMsg: true})
+		}
+		
+		IN RETURN
+		
+		{this.state.showRes && 
+			jsx code for results
+		}
+		*/
+		
+			
 		return(
 			<div>
 				<div className='searchbar'>

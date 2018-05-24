@@ -252,7 +252,7 @@ TODO:
 [x] style search errors
 [x] add none option to dropdown
 [x] if book has shelf, show selection in /search results too
-- Loader stops if query brings same results
+[x] Loader stops if query brings same results
 - Loader stops when no results
 - Loader stops when query is deleted
 - when click on None, remove book from shelf
@@ -282,3 +282,9 @@ Interesting. If query 'art' and then type i query doesn't become 'arti'.
 
 # Day 15 - Tue 23/5/18
 continue. 
+
+***
+
+# Day 16 - Wed 24/5/18
+8:15am - continue. 
+Task: Loader stops when no results.
