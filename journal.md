@@ -255,9 +255,8 @@ TODO:
 [x] Loader stops if query brings same results
 [x] Loader stops when no results
 [x] Task: Loader doesn't fire when query is ''.
-- Loader fade-in is not smooth
-- Loader doesn't fire while typing. It fires when user finishes to type
-- when click on None, remove book from shelf
+[x] Loader fade-in is not smooth
+[x] when click on None, remove book from shelf
 - implement suggestions
 - style suggestions
 - add publisher
@@ -283,12 +282,12 @@ Interesting. If query 'art' and then type i query doesn't become 'arti'.
 
 ***
 
-# Day 15 - Tue 23/5/18
+# Day 15 - Wed 23/5/18
 continue. 
 
 ***
 
-# Day 16 - Wed 24/5/18
+# Day 16 - Thu 24/5/18
 8:15am - continue. 
 
 Task: Optimize Search so that it uses getAll instead of search() + get().
@@ -297,4 +296,17 @@ API available enpoints don't let that. Need to look if I can edit availablen end
 
 3:39pm - Task: Loader doesn't fire when query is ''. Ok, so works but doesn't show what are you looking for in this case
 
+***
 
+# Day 17 - Fri 25/5/18
+8:31am - continue.
+
+
+***
+
+# Day 18 - Fri 1/6/18
+9:13am - when click on None, remove book from shelf
+
+What happens? None means remove from {api}/books. Which means that the book doesn't appear anymore in getBooks()
+
+after giving shelf to book, and click on back, app doesn't get books

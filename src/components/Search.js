@@ -33,7 +33,7 @@ class Search extends Component {
 		})
 
 		if(this.state.query !== '' || this.state.query !== undefined){
-			console.log(this.state.query);			
+			//console.log(this.state.query);
 			this.search(updatedQuery);
 		}
 

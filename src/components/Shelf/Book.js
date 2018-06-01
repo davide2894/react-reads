@@ -12,14 +12,12 @@ class Book extends Component {
 	
 	handleBookChange = (selectedOption) => {
 		this.setState({ selectedOption: selectedOption });
-		
 		BooksAPI.update(this.props.book, selectedOption).then(
 			newOrganization => this.props.onChange(newOrganization)
 		)
 	}
 	
 	toggleDropDown = () => {
-				
 		this.setState( (prevState) => ({
 			displayDropDown: !prevState.displayDropDown,
 			displayButton: !prevState.displayButton

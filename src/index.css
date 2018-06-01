@@ -3,12 +3,25 @@ body {
 }
 
 /* Keyframes */
-@keyframes spinner {
+@-webkit-keyframes spinner {
 	0% {
+		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
 	
 	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	
+	100% {
+		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
 }
@@ -22,11 +35,16 @@ body {
 .header {
 	background-color: #222;
 	margin-bottom: 5em;		
+	-webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);		
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
 .header__content{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: space-between;
 }
 
@@ -73,7 +91,12 @@ body {
 
 .book {
 	max-width: 180px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
 	margin: 3em 0;
 }
@@ -88,6 +111,7 @@ body {
 	width: 130px;
 	height: 180px;
 	margin: 0 auto;
+    -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -119,6 +143,7 @@ body {
 	width: 2.7em;
 	padding: 1.8em;
 	height: 40px;
+	-webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	background-image: url(assets/arrow-drop-down.svg);
 	background-repeat: no-repeat;
@@ -167,6 +192,7 @@ body {
 
 .Select-option:hover {
 	background-color: #d58963;
+	-webkit-transition: 0.2s ease-in-out;
 	transition: 0.2s ease-in-out;
 	font-size: 14px;
 	font-weight: 600;
@@ -207,7 +233,12 @@ Select-value-label[style] {
 }
 
 .book__info {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
 	text-align: center;
 	font-size: 1.2em;
@@ -231,10 +262,13 @@ Select-value-label[style] {
 /* Search */
 
 .searchbar {
+	-webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
 .searchbar__content {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	margin: 2em auto;
 	height: 2em;
@@ -245,6 +279,8 @@ Select-value-label[style] {
 }
 
 .form {	
+	-webkit-box-ordinal-group: 3;	
+	-ms-flex-order: 2;	
 	order: 2;
 	width: 100%;
 }
@@ -265,6 +301,8 @@ Select-value-label[style] {
 }
 
 .searchbar__link-to-home {
+	-webkit-box-ordinal-group: 2;
+	-ms-flex-order: 1;
 	order: 1;
 	width: 20%;
 	background-image: url(assets/arrow-back.svg);
@@ -282,7 +320,11 @@ Select-value-label[style] {
 /* Results */
 
 .search-error {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
 	text-align: center;
 	font-size: 2em;
@@ -300,8 +342,15 @@ Select-value-label[style] {
 	width: 100%;
 	height: 100%;
 	background-color: #222;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
 	opacity: 0.4;
 }
@@ -313,6 +362,7 @@ Select-value-label[style] {
 	height: 5em;
 	margin: auto;
 	border-radius: 50%;
+	-webkit-animation: spinner 0.5s linear infinite;
 	animation: spinner 0.5s linear infinite;
 }
 
@@ -322,16 +372,19 @@ Select-value-label[style] {
 
 .Loader-enter-active {
 	opacity: 0.3;
+	-webkit-transition: all 300ms ease-in;
 	transition: all 300ms ease-in;
 }
 
 .Loader-exit {
 	opacity: 0.2;
+	-webkit-transition: all 300ms ease-out;
 	transition: all 300ms ease-out;
 }
 
 .Loader-exit-active {
 	opacity: 0;
+	-webkit-transition: all 300ms ease-out;
 	transition: all 300ms ease-out;
 }	
 
@@ -358,6 +411,8 @@ Select-value-label[style] {
 
 @media screen and (min-width: 450px) {
 	.header__content {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
 		justify-content: center;
 	}
 

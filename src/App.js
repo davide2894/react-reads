@@ -21,7 +21,7 @@ class App extends Component {
 	}
 	
 	getBooks = () => {
-				
+		console.log('calling getBooks');
 		BooksAPI.getAll().then(books => {
 			this.setState({
 				books: books
@@ -36,13 +36,13 @@ class App extends Component {
 		this.getBooks();
 	}
 
+
 	handleAppChange = () => {
 		
 		this.updateLoaderState();
 		
 		this.getBooks();
 	}
-
   	
     render() {
 
@@ -75,9 +75,9 @@ class App extends Component {
 						<div>
 							<Search 
 								books={books}
-								showLoader={this.state.showLoader}
-								onChange={this.handleAppchChange}
-								onResultsChange={this.handleResultsChange}
+								showLoader={() => this.state.showLoader}
+								onChange={() => this.handleAppChange}
+								onResultsChange={() => this.handleResultsChange}
 							/>
 						</div>)}
 				/>

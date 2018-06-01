@@ -12,7 +12,7 @@ class BookList extends Component {
 	
 	render(){
 		
-		console.log('BookList render() called');
+		//console.log('BookList render() called');
 				
 		let { books } = this.props;
 		
