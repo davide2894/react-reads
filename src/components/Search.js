@@ -65,9 +65,10 @@ class Search extends Component {
 	}
 
 	handleShelfChange = (newOrganization) => {
-		this.props.onChange(newOrganization)
+		console.log('handleShelfChange');
+		this.props.onChange(newOrganization);
 	}
-	
+		
 	handleResultsChange = () => {
 		//console.log('updating loader from this.handleResultChange()');
 		this.setState({showSearchLoader: false});
@@ -77,6 +78,10 @@ class Search extends Component {
 		this.setState((prevState)=>({
 			showSearchLoader: !prevState.showSearchLoader
 		}));	
+	}
+
+	refreshPage = () => {
+		window.location.reload();
 	}
 
 	render(){

@@ -12,6 +12,7 @@ class App extends Component {
 	state = {
 		books: [],
 		showLoader: false,
+		isBackHome: false
 	}
 	
 	updateLoaderState = () => {
@@ -21,7 +22,8 @@ class App extends Component {
 	}
 	
 	getBooks = () => {
-		console.log('calling getBooks');
+		// console.log('calling getBooks');
+		
 		BooksAPI.getAll().then(books => {
 			this.setState({
 				books: books
@@ -31,13 +33,14 @@ class App extends Component {
 		})
 	}
 	
-	componentDidMount(){		
+	componentDidMount(){	
 		this.updateLoaderState();
 		this.getBooks();
 	}
 
-
 	handleAppChange = () => {
+		
+		// console.log('handleAppChange called');
 		
 		this.updateLoaderState();
 		
@@ -45,16 +48,18 @@ class App extends Component {
 	}
   	
     render() {
-
+		
 		const baseUrl = process.env.PUBLIC_URL;
 		
 		let { books, showLoader } = this.state
-				
+			
 		return (
 			<div className='app'>
-			  <Route exact path={baseUrl + '/'} render={()=>(
+			  <Route 
+			  	exact path={baseUrl + '/'} 
+			  	render={()=>(
 					<div>
-						<Header/>
+						<Header onChange={this.handleAppChange}/>
 						<BookList 
 							books={books}
 							shelves={this.state.shelves}
@@ -76,8 +81,8 @@ class App extends Component {
 							<Search 
 								books={books}
 								showLoader={() => this.state.showLoader}
-								onChange={() => this.handleAppChange}
 								onResultsChange={() => this.handleResultsChange}
+								onChange={this.handleAppChange}
 							/>
 						</div>)}
 				/>

@@ -299,7 +299,7 @@ API available enpoints don't let that. Need to look if I can edit availablen end
 ***
 
 # Day 17 - Fri 25/5/18
-8:31am - continue.
+8:31am - continue. Need to force getBooks when go back to home OR force it when page renders
 
 
 ***
@@ -310,3 +310,11 @@ API available enpoints don't let that. Need to look if I can edit availablen end
 What happens? None means remove from {api}/books. Which means that the book doesn't appear anymore in getBooks()
 
 after giving shelf to book, and click on back, app doesn't get books
+
+
+***
+
+# Day 19 - Sat 2/6/18
+
+9:48am - handleAppChange should be triggered when a book is moved to a shelf.
+6:02pm - many interrumptions. Problem was that since Route uses () => already, using it again in inline prop confuses React. In fact the call gets ignored. Remove () from inline prop, inside Route render(), and it works
