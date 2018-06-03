@@ -254,14 +254,24 @@ Select-value-label[style] {
 	margin-top: 1em;
 }
 
-.book__subtitle {
+.book__subtitle,
+.book__publisher,
+.book__publishedDate,
+.book__pageCount {
 	color: #737373;
+}
+
+.book__publisher,
+.book__publishedDate, 
+.book__pageCount {
+	font-weight: 0.8em;
 }
 
 
 /* Search */
 
-.searchbar {
+.searchbar,
+.suggestions {
 	-webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
@@ -329,6 +339,23 @@ Select-value-label[style] {
 	text-align: center;
 	font-size: 2em;
 	font-weight: 700;
+}
+
+
+/* Suggestions */
+.suggestions {
+	background: #ddd;
+	padding: 1em;
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+}
+.suggestion {
+	margin: 0.5em;
+}
+.suggestion:hover{
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 

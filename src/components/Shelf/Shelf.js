@@ -21,7 +21,10 @@ class Shelf extends Component {
 							title={book.title}
 							subtitle={book.subtitle}
 							cover={book.imageLinks.thumbnail}
+							publisher={book.publisher}
+							publishedDate={book.publishedDate}
 							currentShelf={book.shelf}
+							pageCount={book.pageCount}
 							id={book.id}
 							key={book.id}
 							onChange={this.handleShelfChange}

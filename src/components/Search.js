@@ -5,6 +5,7 @@ import Loader from './Loader'
 import Book from './Shelf/Book'
 import coverPlaceholder from '../assets/cover-placeholder.jpg'
 import * as BooksAPI from '.././utils/BooksAPI'
+import escapeRegExp from 'escape-string-regexp'
 
 class Search extends Component {
 	
@@ -15,7 +16,6 @@ class Search extends Component {
 		this.state = {
 			query: '',
 			results: [],
-			showRes: false,
 			showErrMsg: false,
 			showSearchLoader: false
 		};
@@ -94,7 +94,35 @@ class Search extends Component {
 		} else if(results && !results.length) {
 			searchErr = 'Nothing matches : /';		
 		}
+		
+		let showResults = null;
+		
+		if(results && results.length){
+			showResults = true;
+		} else {
+			showResults = false;
+		}
+		
+		let showSuggestions;
+		
+		let suggestionTerms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'];
+		
+		
+		if(query){
 			
+			// create regexp
+			let match = new RegExp(escapeRegExp(query), 'i');
+			
+			// return only matched arr terms
+			showSuggestions = suggestionTerms.filter(suggestion => match.test(suggestion));
+			
+			
+		} else {
+			
+			showSuggestions = null;
+			
+		}
+		
 		return(
 			<div>
 				<div className='searchbar'>
@@ -114,8 +142,18 @@ class Search extends Component {
 						</div>
 					</div>
 				</div>
+				
+				{showSuggestions && ( 
+					<ul className='suggestions'>
+						{showSuggestions.map(suggestion => 
+						 	<li 
+						 		className='suggestion'
+						 		onClick={()=>this.handleQuery(suggestion)}
+						 		key={suggestion}
+						 		>{suggestion}</li>)}
+					</ul> )}
 				 
-				{results && results.length && (
+				{showResults && (
 					<div className='results' onLoad={this.handleResultsChange}>
 						{results.map(result => 
 								<Book
@@ -123,6 +161,8 @@ class Search extends Component {
 									cover={result.imageLinks ? (result.imageLinks.thumbnail ? result.imageLinks.thumbnail : result.imageLinks.smallThumbnail) : coverPlaceholder}
 									title={result.title}
 									subtitle={result.subtitle}
+									publisher={result.publisher}
+									publishedDate={result.publishedDate}
 									id={result.id}
 									key={result.id}
 									onChange={this.handleShelfChange}
@@ -131,7 +171,7 @@ class Search extends Component {
 						}
 					</div>				
 				)}
-				
+								
 				{!!searchErr &&  <div className='search-error'>{searchErr}</div>}
 				
 				<CSSTransition

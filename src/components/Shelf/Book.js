@@ -37,7 +37,7 @@ class Book extends Component {
 	render(){
 		
 		let { selectedOption, displayDropDown, displayButton } = this.state;
-		const { title, subtitle, cover } = this.props;
+		const { title, subtitle, cover, publisher, publishedDate, pageCount } = this.props;
 		//console.log('Render Book');
 		return (
 				<div>
@@ -84,6 +84,10 @@ class Book extends Component {
 							<div className='book__info'>
 								<span className='book__title'><strong>{title}</strong></span>
 								<span className='book__subtitle'>{subtitle}</span>
+								<span className='book__publisher'><i>{publisher}</i></span>
+								<span className='book__publishedDate'>{publishedDate}</span>
+								<span className='book__pageCount'>Pages: {pageCount}</span>
+								
 							</div>
 						</div>
 					)}

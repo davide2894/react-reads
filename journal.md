@@ -257,11 +257,15 @@ TODO:
 [x] Task: Loader doesn't fire when query is ''.
 [x] Loader fade-in is not smooth
 [x] when click on None, remove book from shelf
-- implement suggestions
-- style suggestions
-- add publisher
-- style publisher
-- refactor if/else statements inside render->return
+[x] refactor if/else statements inside render->return
+[x] implement suggestions
+[x] style suggestions
+[x] add publisher
+[x] style publisher
+[x] add rating
+[x] style rating
+- add genre
+- style genre
 
 ***
 
@@ -318,3 +322,31 @@ after giving shelf to book, and click on back, app doesn't get books
 
 9:48am - handleAppChange should be triggered when a book is moved to a shelf.
 6:02pm - many interrumptions. Problem was that since Route uses () => already, using it again in inline prop confuses React. In fact the call gets ignored. Remove () from inline prop, inside Route render(), and it works
+
+# Day 20 - Sun 3/6/18
+8:11am - implemet suggestions.
+I can use the available search terms as suggestions. It's similar to search contacts. As user types I search for any word matching the pattern given. If amy is found show if below. Suggestions div should appear only when a pattern is matched.
+
+Inside render:
+[x] create sugg term arr
+- creare sugg logic
+	* if match: 
+		* show matching terms
+		* matching terms are clickable
+		* when a matching term is clicked, search that term, which meas: 
+			* query state updates
+			* query is passed to search
+			* search fires with that term
+	* else: don't show div
+- make sugg div appear on match
+
+
+6:28pm - Task: add publisher
+
+
+
+
+
+
+
+
