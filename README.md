@@ -1,6 +1,6 @@
 # React Reads
 
-![React Reads](src/assets/react-reads-mockup.png?raw=true)
+![React Reads](./assets/react-reads-mockup.jpeg?raw=true)
 
 React Reads is a book tracking app based on React. Search the books you want, you can organize them in the following categories:
 - want to read
